@@ -19,20 +19,11 @@ update-alternatives --set gem /usr/bin/gem2.2 >/dev/null 2>&1
 echo installing Bundler
 gem install bundler -N >/dev/null 2>&1
 
-echo updating system
-gem update --system 2.0.3
-
-echo installing ruby-dev
-yes | sudo apt-get install ruby-dev
-
 echo installing Foreman
 gem install foreman
 
 echo installing Middleman
 gem install middleman
-
-echo installing Rails
-gem install rails
 
 install Git git
 install SQLite sqlite3 libsqlite3-dev
@@ -41,13 +32,13 @@ install Redis redis-server
 install RabbitMQ rabbitmq-server
 
 install PostgreSQL postgresql postgresql-contrib libpq-dev
-sudo -u postgres createuser -w --superuser vagrant
+sudo -u postgres createuser --superuser vagrant
 sudo -u postgres createdb -O vagrant activerecord_unittest
 sudo -u postgres createdb -O vagrant activerecord_unittest2
-sudo psql -U vagrant postgres <<EOF
+sudo su postgres <<EOF
+psql;
 CREATE USER coderelf WITH CREATEDB PASSWORD 'password';
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO coderelf;
-\q;
 EOF
 
 
@@ -68,6 +59,9 @@ install 'ExecJS runtime' nodejs
 
 # Needed for docs generation.
 update-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+echo installing Rails
+gem install rails
 
 echo removing unnecessary packages
 yes | apt-get autoremove
