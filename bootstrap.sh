@@ -19,6 +19,15 @@ update-alternatives --set gem /usr/bin/gem2.2 >/dev/null 2>&1
 echo installing Bundler
 gem install bundler -N >/dev/null 2>&1
 
+echo installing Foreman
+gem install foreman
+
+echo installing Middleman
+gem install middleman
+
+echo installing Rails
+gem install rails
+
 install Git git
 install SQLite sqlite3 libsqlite3-dev
 install memcached memcached
@@ -29,6 +38,11 @@ install PostgreSQL postgresql postgresql-contrib libpq-dev
 sudo -u postgres createuser --superuser vagrant
 sudo -u postgres createdb -O vagrant activerecord_unittest
 sudo -u postgres createdb -O vagrant activerecord_unittest2
+sudo psql -U vagrant postgres <<SQL
+CREATE USER coderelf WITH CREATEDB PASSWORD 'password';
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO coderelf;
+SQL
+
 
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'

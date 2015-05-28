@@ -64,7 +64,7 @@ To halt:
 vagrant halt
 ```
 
-### -- I CASE OF ERROR ON VAGRANT UP --
+### -- IN CASE OF ERROR ON VAGRANT UP --
 
 Run:
 ```terminal
