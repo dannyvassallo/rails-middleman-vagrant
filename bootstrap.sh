@@ -22,6 +22,9 @@ gem install bundler -N >/dev/null 2>&1
 echo updating system
 gem update --system 2.0.3
 
+echo installing ruby-dev
+sudo apt-get install ruby-dev
+
 echo installing Foreman
 gem install foreman
 
@@ -41,9 +44,10 @@ install PostgreSQL postgresql postgresql-contrib libpq-dev
 sudo -u postgres createuser --superuser vagrant
 sudo -u postgres createdb -O vagrant activerecord_unittest
 sudo -u postgres createdb -O vagrant activerecord_unittest2
-sudo -u postgres <<SQL
+psql -U vagrant postgres <<SQL
 CREATE USER coderelf WITH CREATEDB PASSWORD 'password';
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO coderelf;
+\q;
 SQL
 
 
