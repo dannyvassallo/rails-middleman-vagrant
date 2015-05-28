@@ -23,7 +23,7 @@ echo updating system
 gem update --system 2.0.3
 
 echo installing ruby-dev
-sudo apt-get install ruby-dev
+yes | sudo apt-get install ruby-dev
 
 echo installing Foreman
 gem install foreman
@@ -41,14 +41,14 @@ install Redis redis-server
 install RabbitMQ rabbitmq-server
 
 install PostgreSQL postgresql postgresql-contrib libpq-dev
-sudo -u postgres createuser --superuser vagrant
+sudo -u postgres createuser -w --superuser vagrant
 sudo -u postgres createdb -O vagrant activerecord_unittest
 sudo -u postgres createdb -O vagrant activerecord_unittest2
-psql -U vagrant postgres <<SQL
+sudo psql -U vagrant postgres <<EOF
 CREATE USER coderelf WITH CREATEDB PASSWORD 'password';
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO coderelf;
 \q;
-SQL
+EOF
 
 
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
@@ -68,5 +68,8 @@ install 'ExecJS runtime' nodejs
 
 # Needed for docs generation.
 update-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+echo removing unnecessary packages
+yes | apt-get autoremove
 
 echo 'all set, rock on!'
