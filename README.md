@@ -63,6 +63,34 @@ To halt:
 ```terminal
 vagrant halt
 ```
+
+### -- I CASE OF ERROR ON VAGRANT UP --
+
+Run:
+```terminal
+$ lsof -i | grep LISTEN
+```
+
+If you see something listed like this:
+```terminal
+VBoxHeadl 4405 my_name   18u  IPv4 0xffffff802a933320      0t0  TCP *:hbci (LISTEN)
+VBoxHeadl 4405 my_name   19u  IPv4 0xffffff802bcf04e0      0t0  TCP localhost:rockwell-csp2 (LISTEN)
+```
+
+Run (replace 4405 with the number in your print out):
+```terminal
+$ kill -9 4405
+```
+
+To check the process has been killed run:
+```
+$ lsof -i | grep LISTEN
+```
+
+The VBoxHeadl should be missing. You are good to now run:
+```
+$ vagrant up
+```
 ------------
 ### PostGres Credentials
 Taken from [here](https://gist.github.com/eliotsykes/3e74172c43c2e8787dd9)
