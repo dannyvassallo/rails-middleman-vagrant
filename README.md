@@ -101,5 +101,5 @@ $ bin/rails s -b 0.0.0.0
 don't use middleman s. use this instead:
 
 ```
-bundle exec middleman s --port=3000
+$ bundle exec middleman s --port=3000
 ```
