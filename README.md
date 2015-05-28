@@ -37,7 +37,7 @@ For OSX/Linux/Windows
 ### Git Clone the repo where ever you'd like the machine
 ```terminal
 $ git clone https://github.com/dannyvassallo/rails-middleman-vagrant.git
-$ cd 'rails-middleman-vagrant'
+$ cd rails-middleman-vagrant
 ```
 
 ------------
