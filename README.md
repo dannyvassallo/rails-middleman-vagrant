@@ -36,7 +36,7 @@ For OSX/Linux/Windows
 
 /// FOR WINDOWS ONLY SKIP AHEAD TO VAGRANT BOX SECTION IF USING OSX ///
 
-5) Download and Install [PuTTy](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)[putty.exe](http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe)
+5) Download and Install [PuTTy](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) [putty.exe](http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe)
 
 6) Download and Install [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) [puttygen.exe](http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe)
 
