@@ -53,6 +53,56 @@ $ cd rails-middleman-vagrant
 
 ###Macintosh OS X
 
+####Setting Memory and Processor Power in Vagrant
+
+navigate to the cloned repo
+```
+cd rails-middleman-vagrant
+```
+
+Open 'Vagrantfile' with sublime text
+
+Replace it's contents with these changing the number following ```v.cpus```
+to update the number of processor cores and changing the number following
+```v.memory``` to your desired RAM specs.
+
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure('2') do |config|
+  config.vm.box      = 'ubuntu/trusty64'
+  config.vm.hostname = 'danny-rails-middleman'
+
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
+
+  config.vm.provision :shell, path: 'bootstrap.sh', keep_color: true
+
+  config.vm.provider 'virtualbox' do |v|
+    v.cpus = 2
+    v.memory = 2048
+  end
+
+end
+```
+
+If you've run ```vagrant up``` before setting up your memory run:
+
+```
+$ vagrant destroy
+$ vagrant up && vagrant provision
+```
+
+
+######Check Your Memory has been successfully changed
+```
+$ cd rails-middleman-vagrant
+$ vagrant up
+$ vagrant ssh
+$ free -m
+```
+The total memory reported should match closely to the ```v.memory``` inputted.
+
+
 #### Start Vagrant
 
 To Start up your VM
@@ -80,6 +130,56 @@ vagrant halt
 ```
 
 ###Windows XP/7/8
+
+####Setting Memory and Processor Power in Vagrant
+
+navigate to the cloned repo
+```
+cd rails-middleman-vagrant
+```
+
+Open 'Vagrantfile' with sublime text
+
+Replace it's contents with these changing the number following ```v.cpus```
+to update the number of processor cores and changing the number following
+```v.memory``` to your desired RAM specs.
+
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure('2') do |config|
+  config.vm.box      = 'ubuntu/trusty64'
+  config.vm.hostname = 'danny-rails-middleman'
+
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
+
+  config.vm.provision :shell, path: 'bootstrap.sh', keep_color: true
+
+  config.vm.provider 'virtualbox' do |v|
+    v.cpus = 2
+    v.memory = 2048
+  end
+
+end
+```
+
+If you've run ```vagrant up``` before setting up your memory run:
+
+```
+$ vagrant destroy
+$ vagrant up && vagrant provision
+```
+
+
+######Check Your Memory has been successfully changed
+```
+$ cd rails-middleman-vagrant
+$ vagrant up
+$ vagrant ssh
+$ free -m
+```
+The total memory reported should match closely to the ```v.memory``` inputted.
+
 
 #### Start Vagrant
 
@@ -123,7 +223,7 @@ and click open on this file.
 
 * Set "Host Name (or IP address)" to "127.0.0.1"
 * Set "Port" to "2222"
-* Set "Connection Type" to "SSH" 
+* Set "Connection Type" to "SSH"
 
 ##### IN CONNECTION/SSH/AUTH:
 
