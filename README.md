@@ -175,7 +175,9 @@ $ vagrant up && vagrant provision
 ```
 $ cd rails-middleman-vagrant
 $ vagrant up
-$ vagrant ssh
+```
+FOLLOW PUTTY INSTRUCTIONS BELOW
+```
 $ free -m
 ```
 The total memory reported should match closely to the ```v.memory``` inputted.
